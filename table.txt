@@ -1,0 +1,10 @@
+Field                   Rule                                                                                                             Valid example                                      Invalid example
+Full name               2–4 words, each only letters, - or '                                                                             Aigerim Nurlanova                                  Aigerim / Ai9erim N
+Email                   Domain must contain a dot; must not be already registered                                                        new@mail.kz                                        a@b / test@example.com
+Phone                   After removing symbols: 11 digits starting with 7 or 8                                                           +7 701 123 45 67                                   +7 123
+Date of birth           Age calculated from the date must be 16–60                                                                       2006-05-05                                         2016-05-05 / future date
+Level (vs Program)      The chosen level must be allowed by the chosen program (Cybersecurity is not open to beginners)                  Cybersecurity + Advanced                           Cybersecurity + Beginner
+Motivation              At least 30 characters and 5 words                                                                               I want to learn how to build secure web apps.      Too short text
+Username                4–16 chars, starts with a letter, letters/digits/_; not in the taken list                                        aiina_k                                            9abc / admin
+Password                8+ chars with upper, lower and digit; must not contain username, first name (step 1) or email name (step 1)      Gooduse7pass                                       short1A / Aiina12345X
+Repeat password         Must equal the password                                                                                          same as password                                   Different1

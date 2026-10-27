@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Task 3 – Application Wizard</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="task3.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a href="index.html">&larr; Assignment 5</a>
+    <h1>Task 3: Course Application Wizard</h1>
+  </header>
+
+  <main class="container">
+    <div class="layout">
+      <section id="wizard" class="card" aria-labelledby="wizard-title">
+        <h2 id="wizard-title">Apply for a course</h2>
+
+        <ol id="stepper" class="stepper" aria-label="Progress">
+          <li data-step="1">1. Personal</li>
+          <li data-step="2">2. Program</li>
+          <li data-step="3">3. Account</li>
+          <li data-step="4">4. Review</li>
+        </ol>
+        <progress id="progress" aria-label="Application progress" value="1" max="4"></progress>
+
+        <div id="error-summary" class="message message--error" role="alert" tabindex="-1" hidden></div>
+
+        <form id="application-form" novalidate>
+          <!-- STEP 1 -->
+          <fieldset class="step" data-step="1">
+            <legend class="sr-only">Step 1: Personal data</legend>
+            <h3 class="step-title" tabindex="-1">Step 1: Personal data</h3>
+
+            <div class="field">
+              <label for="fullName">Full name</label>
+              <input type="text" id="fullName" name="fullName" required maxlength="60" autocomplete="name"
+                     aria-describedby="hint-fullName err-fullName">
+              <p class="hint" id="hint-fullName">First and last name, e.g. Aigerim Nurlanova.</p>
+              <p class="error" id="err-fullName"></p>
+            </div>
+
+            <div class="field">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required maxlength="80" autocomplete="email"
+                     aria-describedby="hint-email err-email">
+              <p class="hint" id="hint-email">We will send the confirmation here.</p>
+              <p class="error" id="err-email"></p>
+            </div>
+
+            <div class="field">
+              <label for="phone">Phone</label>
+              <input type="tel" id="phone" name="phone" required maxlength="20" autocomplete="tel"
+                     aria-describedby="hint-phone err-phone">
+              <p class="hint" id="hint-phone">Kazakhstan number, e.g. +7 701 123 45 67.</p>
+              <p class="error" id="err-phone"></p>
+            </div>
+
+            <div class="field">
+              <label for="birthDate">Date of birth</label>
+              <input type="date" id="birthDate" name="birthDate" required
+                     aria-describedby="hint-birthDate err-birthDate">
+              <p class="hint" id="hint-birthDate">Applicants must be 16 to 60 years old.</p>
+              <p class="error" id="err-birthDate"></p>
+            </div>
+          </fieldset>
+
+          <!-- STEP 2 -->
+          <fieldset class="step" data-step="2" hidden>
+            <legend class="sr-only">Step 2: Program</legend>
+            <h3 class="step-title" tabindex="-1">Step 2: Program</h3>
+
+            <div class="field">
+              <label for="program">Program</label>
+              <select id="program" name="program" required aria-describedby="hint-program err-program">
+                <option value="">Choose a program</option>
+                <option value="web">Web Development</option>
+                <option value="data">Data Science</option>
+                <option value="cyber">Cybersecurity</option>
+                <option value="mobile">Mobile Apps</option>
+              </select>
+              <p class="hint" id="hint-program">Cybersecurity is not open to beginners.</p>
+              <p class="error" id="err-program"></p>
+            </div>
+
+            <div class="field">
+              <label for="level">Your level</label>
+              <select id="level" name="level" required aria-describedby="err-level">
+                <option value="">Choose a level</option>
+                <option value="beginner">Beginner</option>
+                <option value="intermediate">Intermediate</option>
+                <option value="advanced">Advanced</option>
+              </select>
+              <p class="error" id="err-level"></p>
+            </div>
+
+            <div class="field">
+              <label for="intake">Start date</label>
+              <select id="intake" name="intake" required aria-describedby="err-intake">
+                <option value="">Choose an intake</option>
+                <option value="2026-11">November 2026</option>
+                <option value="2027-01">January 2027</option>
+                <option value="2027-03">March 2027</option>
+              </select>
+              <p class="error" id="err-intake"></p>
+            </div>
+
+            <div class="field">
+              <label for="motivation">Why do you want to join?</label>
+              <textarea id="motivation" name="motivation" rows="4" required maxlength="300"
+                        aria-describedby="hint-motivation err-motivation"></textarea>
+              <p class="hint" id="hint-motivation">At least 30 characters and 5 words. <span id="motivation-count">0 / 300</span></p>
+              <p class="error" id="err-motivation"></p>
+            </div>
+          </fieldset>
+
+          <!-- STEP 3 -->
+          <fieldset class="step" data-step="3" hidden>
+            <legend class="sr-only">Step 3: Account</legend>
+            <h3 class="step-title" tabindex="-1">Step 3: Account</h3>
+
+            <div class="field">
+              <label for="username">Username</label>
+              <input type="text" id="username" name="username" required maxlength="16" autocomplete="username"
+                     aria-describedby="hint-username err-username">
+              <p class="hint" id="hint-username">4–16 characters: letters, digits, underscore. Starts with a letter.</p>
+              <p class="error" id="err-username"></p>
+            </div>
+
+            <div class="field">
+              <label for="password">Password</label>
+              <input type="password" id="password" name="password" required maxlength="64" autocomplete="new-password"
+                     aria-describedby="hint-password err-password">
+              <p class="hint" id="hint-password">8+ characters with upper case, lower case and a digit. Must not contain your name, email name or username.</p>
+              <p class="error" id="err-password"></p>
+            </div>
+
+            <div class="field">
+              <label for="confirmPassword">Repeat password</label>
+              <input type="password" id="confirmPassword" name="confirmPassword" required maxlength="64" autocomplete="new-password"
+                     aria-describedby="err-confirmPassword">
+              <p class="error" id="err-confirmPassword"></p>
+            </div>
+
+            <div class="field">
+              <label class="checkbox" for="terms">
+                <input type="checkbox" id="terms" name="terms" required aria-describedby="err-terms">
+                <span>I confirm that the data is correct and accept the course rules.</span>
+              </label>
+              <p class="error" id="err-terms"></p>
+            </div>
+          </fieldset>
+
+          <!-- STEP 4: review -->
+          <fieldset class="step" data-step="4" hidden>
+            <legend class="sr-only">Step 4: Review</legend>
+            <h3 class="step-title" tabindex="-1">Step 4: Review your application</h3>
+            <div id="review"></div>
+          </fieldset>
+
+          <div class="wizard-actions">
+            <button type="button" id="back-btn" class="btn">Back</button>
+            <button type="submit" id="next-btn" class="btn btn--primary">Next</button>
+          </div>
+        </form>
+      </section>
+
+      <aside>
+        <section class="card" aria-labelledby="summary-title">
+          <h2 id="summary-title">Live summary</h2>
+          <p id="filled-count" class="hint"></p>
+          <dl id="summary" class="summary-dl"></dl>
+        </section>
+      </aside>
+    </div>
+
+    <section id="result" class="card confirmation" aria-live="polite" hidden></section>
+  </main>
+</body>
+</html>

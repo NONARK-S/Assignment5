@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Task 2 – PC Configurator</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="task2.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a href="index.html">&larr; Assignment 5</a>
+    <h1>Task 2: PC Configurator</h1>
+  </header>
+
+  <main class="container">
+    <p id="message" class="message" role="status" aria-live="polite"></p>
+
+    <div class="layout">
+      <section aria-labelledby="catalog-title">
+        <h2 id="catalog-title">Parts</h2>
+
+        <div class="controls">
+          <div>
+            <label for="budget">Budget ($)</label>
+            <input type="number" id="budget" inputmode="numeric" aria-describedby="budget-hint">
+            <p id="budget-hint" class="hint"></p>
+          </div>
+          <div>
+            <label for="search">Search</label>
+            <input type="text" id="search" placeholder="Name or tag, e.g. amd">
+          </div>
+          <div>
+            <label for="category">Category</label>
+            <select id="category"></select>
+          </div>
+        </div>
+
+        <div id="catalog" class="grid"></div>
+        <p id="no-results" class="empty" hidden>No parts match your search.</p>
+      </section>
+
+      <aside>
+        <section class="card" aria-labelledby="build-title">
+          <h2 id="build-title">Your build</h2>
+          <ul id="build-list" class="summary-list"></ul>
+          <p>Total: <span id="total" class="total"></span></p>
+          <progress id="budget-bar" aria-label="Budget used" value="0" max="1"></progress>
+          <p id="budget-text" class="hint"></p>
+          <p id="power-text"></p>
+          <div class="row">
+            <button type="button" id="save-build" class="btn btn--primary">Save build</button>
+            <button type="button" id="clear-build" class="btn btn--danger">Clear</button>
+          </div>
+        </section>
+      </aside>
+    </div>
+
+    <section class="card" aria-labelledby="saved-title">
+      <h2 id="saved-title">Saved builds (up to 3)</h2>
+      <p id="saved-empty" class="empty">No saved builds yet. Complete a build and press “Save build”.</p>
+      <div id="saved" class="table-wrap"></div>
+    </section>
+  </main>
+</body>
+</html>
